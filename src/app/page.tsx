@@ -1,6 +1,5 @@
 import Image from "next/image";
 import {
-  ArrowLeft,
   Bell,
   Bookmark,
   BriefcaseBusiness,
@@ -21,7 +20,7 @@ import {
   WalletCards,
 } from "lucide-react";
 import Avatar from "../../public/avatar.png";
-import { Midlevel, Sparkles, ThumbsDown } from "../components/icons";
+import { ArrowLeft, Midlevel, Sparkles, ThumbsDown } from "../components/icons";
 import { cn } from "@/lib/utils";
 import {
   Popover,
@@ -44,7 +43,7 @@ export default function Page() {
               alt="hiry logo"
               className=" h-8 w-auto"
             />
-            <button className=" w-8 h-8 flex items-center justify-center">
+            <button className=" w-8 h-8 flex items-center justify-center bg-inherit hover:bg-gray-50 transition-all p-1 rounded-md">
               <SidebarClose className="text-neutralSecondary w-4 h-4" />
             </button>
           </div>
@@ -81,29 +80,31 @@ export default function Page() {
                 </div>
               </div>
 
-              <button className=" w-8 h-8 flex items-center justify-center">
+              <button className=" w-8 h-8 flex items-center justify-center bg-inherit hover:bg-gray-50 transition-all p-[10px] rounded-md">
                 <ChevronsUpDown className=" text-neutralSecondary w-4 h-4" />
               </button>
             </div>
 
-            <div className=" flex flex-col items-start w-full gap-5 p-[10px]">
-              <div className=" flex items-center gap-3 cursor-pointer">
+            <div className=" flex flex-col items-start w-full">
+              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
                 <House className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Dashboard</p>
               </div>
-              <FadedSeparator />
-              <div className=" flex items-center gap-3 relative cursor-pointer">
-                <Dot className=" absolute w-7 h-7 -left-6 top-1/2 -translate-y-1/2 text-[#F43F5F]" />
+              <div className=" p-[10px] w-full">
+                <FadedSeparator />
+              </div>
+              <div className=" flex items-center gap-3 relative cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
+                <Dot className=" absolute w-7 h-7 -left-[14px] top-1/2 -translate-y-1/2 text-[#F43F5F]" />
                 <MessageCircleMore className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Messages</p>
               </div>
-              <div className=" flex items-center gap-3 cursor-pointer">
+              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
                 <Search className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">
                   Discover Freelancers
                 </p>
               </div>
-              <div className=" flex items-center justify-between w-full">
+              <div className=" flex items-center justify-between cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
                 <div className=" flex items-center gap-3">
                   <Clipboard className=" w-4 h-4 text-neutralSecondary" />
                   <p className=" text-sm text-neutralSecondary">Jobs</p>
@@ -113,7 +114,7 @@ export default function Page() {
                 </button>
               </div>
 
-              <div className=" flex items-center justify-between w-full">
+              <div className=" flex items-center justify-between bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md cursor-pointer">
                 <div className=" flex items-center gap-3">
                   <BriefcaseBusiness className=" w-4 h-4 text-neutralSecondary" />
                   <p className=" text-sm text-neutralSecondary">Projects</p>
@@ -123,12 +124,14 @@ export default function Page() {
                 </button>
               </div>
 
-              <FadedSeparator />
-              <div className=" flex items-center gap-3 cursor-pointer">
+              <div className=" p-[10px] w-full">
+                <FadedSeparator />
+              </div>
+              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
                 <WalletCards className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Payments</p>
               </div>
-              <div className=" flex items-center gap-3 cursor-pointer">
+              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
                 <Settings className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Settings</p>
               </div>
@@ -149,7 +152,7 @@ export default function Page() {
         <div className=" sticky top-0 bg-white w-full flex items-center justify-between px-8 py-3 border-b border-borderNeutralSecondary">
           <div className=" flex items-center gap-2">
             <div className=" w-8 h-8 flex items-center justify-center">
-              <ArrowLeft className=" w-4 h-4 text-neutralSecondary" />
+              <ArrowLeft />
             </div>
             <p className=" font-medium text-xl tracking-tight">Jobs</p>
           </div>
@@ -159,10 +162,10 @@ export default function Page() {
               <div className=" absolute p-[1px] w-2 h-2 z-10 bg-white rounded-full top-0 right-0">
                 <div className=" w-full h-full bg-[#F43F5F] rounded-full"></div>
               </div>
-              <MessageCircleMore className=" w-5 h-5 text-neutralSecondary relative"></MessageCircleMore>
+              <MessageCircleMore className=" w-5 h-5 text-neutralSecondary relative "></MessageCircleMore>
             </div>
-            <div className=" w-10 h-10 flex items-center justify-center cursor-pointer">
-              <Bell className=" w-5 h-5 text-neutralSecondary" />
+            <div className=" w-10 h-10 flex items-center justify-center cursor-pointer bg-inherit hover:bg-gray-50 transition-all p-1 rounded-md">
+              <Bell className=" w-[22px] h-[22px] text-neutralSecondary" />
             </div>
           </div>
         </div>
@@ -177,11 +180,9 @@ export default function Page() {
 
               <div className=" bg-accentLime py-1 gap-[6px] px-[10px] rounded-full flex items-center w-fit">
                 <Sparkles />
-                <p className=" text-accentLimePrimary text-sm tracking-tight">
-                  100% match
-                </p>
+                <p className=" text-accentLimePrimary text-sm">100% match</p>
               </div>
-              <p className=" font-medium text-2xl tracking-tight">
+              <p className=" font-medium text-2xl leading-7 tracking-tight">
                 Freelance Marketing Consultant Needed for Strategic Audience
                 Engagement
               </p>
@@ -223,7 +224,7 @@ export default function Page() {
 
               <div className=" flex items-center w-full justify-between">
                 <button
-                  className=" basis-[70%] h-12 shrink-0 bg-accentBlue text-white tracking-tight font-medium rounded-[14px] py-1 px-5"
+                  className=" basis-[70%] h-12 shrink-0 bg-accentBlue text-white tracking-tight font-medium rounded-[14px] py-1 px-5 hover:bg-[#2D3BFA] transition-all"
                   style={{
                     boxShadow:
                       "0px 8px 16px -8px #3040FF33, 0px 13px 27px -5px #3040FF26",
@@ -231,7 +232,7 @@ export default function Page() {
                 >
                   Apply now
                 </button>
-                <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderNeutralPrimary">
+                <button className=" w-12 h-12 flex items-center bg-white hover:bg-[#FCFCFC] transition-all justify-center rounded-[14px] border border-borderNeutralPrimary">
                   <Bookmark className=" w-5 h-5 text-neutralPrimary" />
                 </button>
                 <DislikeButton />
@@ -315,7 +316,7 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <div className=" shrink-0 basis-3/5 pl-6 flex flex-col gap-8">
+          <div className=" shrink-0 basis-3/5 pl-6 flex flex-col gap-8 tracking-tight">
             <div className=" flex flex-col w-full gap-4">
               <div className=" flex items-center gap-2 pb-4 border-b border-borderNeutralSecondary">
                 <p className=" font-medium text-sm w-28">Skills</p>
@@ -469,9 +470,9 @@ function FadedSeparator({ fadeBothSides }: { fadeBothSides?: boolean }) {
       className=" block w-full"
       aria-hidden
       style={{
-        border: "1px solid transparent",
+        border: "0.9px solid transparent",
         borderImage:
-          "linear-gradient(to right, var(--border-neutral-primary), #fff) 1",
+          "linear-gradient(to right, var(--border-neutral-primary), #fff) 0.9",
       }}
     ></span>
   );
@@ -487,7 +488,7 @@ function RoundedContainerTag({
   return (
     <div
       className={cn(
-        "py-[4px] px-[10px] rounded-full border border-borderNeutralPrimary text-sm",
+        "py-1 px-[10px] rounded-full border border-borderNeutralPrimary text-sm",
         className
       )}
     >
@@ -500,7 +501,7 @@ function DislikeButton() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderDestructiveSecondary">
+        <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderDestructiveSecondary bg-white hover:bg-[#FEFBFC] transition-all">
           <ThumbsDown />
         </button>
       </PopoverTrigger>
