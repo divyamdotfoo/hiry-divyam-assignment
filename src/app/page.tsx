@@ -5,6 +5,7 @@ import {
   Bookmark,
   BriefcaseBusiness,
   ChevronsUpDown,
+  Clipboard,
   Clock3,
   Dot,
   House,
@@ -22,6 +23,12 @@ import {
 import Avatar from "../../public/avatar.png";
 import { Midlevel, Sparkles, ThumbsDown } from "../components/icons";
 import { cn } from "@/lib/utils";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Checkbox } from "@/components/ui/checkbox";
 export default function Page() {
   return (
     <div className=" flex items-stretch w-full relative">
@@ -37,9 +44,9 @@ export default function Page() {
               alt="hiry logo"
               className=" h-8 w-auto"
             />
-            <div className=" w-8 h-8 flex items-center justify-center">
+            <button className=" w-8 h-8 flex items-center justify-center">
               <SidebarClose className="text-neutralSecondary w-4 h-4" />
-            </div>
+            </button>
           </div>
 
           {/* sidebar content */}
@@ -56,13 +63,15 @@ export default function Page() {
                       className="rounded-full h-full w-full object-cover"
                     />
                   </div>
-                  <Image
-                    src={"/company.png"}
-                    width={100}
-                    height={100}
-                    alt="company"
-                    className=" absolute rounded-full w-5 h-5 z-10 bottom-0 right-0"
-                  />
+                  <div className=" absolute flex items-center justify-center rounded-full w-5 h-5 p-[1px] z-10 bottom-0 right-0 bg-white">
+                    <Image
+                      src={"/company.png"}
+                      width={100}
+                      height={100}
+                      alt="company"
+                      className=" rounded-full object-cover"
+                    />
+                  </div>
                 </div>
                 <div>
                   <p className=" text-sm font-medium text-neutralPrimary">
@@ -72,22 +81,23 @@ export default function Page() {
                 </div>
               </div>
 
-              <div className=" w-8 h-8 flex items-center justify-center">
+              <button className=" w-8 h-8 flex items-center justify-center">
                 <ChevronsUpDown className=" text-neutralSecondary w-4 h-4" />
-              </div>
+              </button>
             </div>
 
             <div className=" flex flex-col items-start w-full gap-5 p-[10px]">
-              <div className=" flex items-center gap-3">
+              <div className=" flex items-center gap-3 cursor-pointer">
                 <House className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Dashboard</p>
               </div>
               <FadedSeparator />
-              <div className=" flex items-center gap-3">
+              <div className=" flex items-center gap-3 relative cursor-pointer">
+                <Dot className=" absolute w-7 h-7 -left-6 top-1/2 -translate-y-1/2 text-[#F43F5F]" />
                 <MessageCircleMore className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Messages</p>
               </div>
-              <div className=" flex items-center gap-3">
+              <div className=" flex items-center gap-3 cursor-pointer">
                 <Search className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">
                   Discover Freelancers
@@ -95,36 +105,36 @@ export default function Page() {
               </div>
               <div className=" flex items-center justify-between w-full">
                 <div className=" flex items-center gap-3">
-                  <MessageCircleMore className=" w-4 h-4 text-neutralSecondary" />
-                  <p className=" text-sm text-neutralSecondary">Messages</p>
+                  <Clipboard className=" w-4 h-4 text-neutralSecondary" />
+                  <p className=" text-sm text-neutralSecondary">Jobs</p>
                 </div>
-                <div className=" w-6 h-6 flex items-center justify-center">
+                <button className=" w-6 h-6 flex items-center justify-center">
                   <Plus className=" text-neutralSecondary w-4 h-4" />
-                </div>
+                </button>
               </div>
 
               <div className=" flex items-center justify-between w-full">
                 <div className=" flex items-center gap-3">
-                  <MessageCircleMore className=" w-4 h-4 text-neutralSecondary" />
-                  <p className=" text-sm text-neutralSecondary">Messages</p>
+                  <BriefcaseBusiness className=" w-4 h-4 text-neutralSecondary" />
+                  <p className=" text-sm text-neutralSecondary">Projects</p>
                 </div>
-                <div className=" w-6 h-6 flex items-center justify-center">
+                <button className=" w-6 h-6 flex items-center justify-center">
                   <Plus className=" text-neutralSecondary w-4 h-4" />
-                </div>
+                </button>
               </div>
 
               <FadedSeparator />
-              <div className=" flex items-center gap-3">
+              <div className=" flex items-center gap-3 cursor-pointer">
                 <WalletCards className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Payments</p>
               </div>
-              <div className=" flex items-center gap-3">
+              <div className=" flex items-center gap-3 cursor-pointer">
                 <Settings className=" w-4 h-4 text-neutralSecondary" />
                 <p className=" text-sm text-neutralSecondary">Settings</p>
               </div>
             </div>
           </div>
-          <div className=" absolute bottom-4 left-3 p-3 flex items-center gap-3">
+          <div className=" absolute bottom-4 left-3 p-3 flex items-center gap-3 cursor-pointer">
             <Info className=" w-4 h-4 text-neutralSecondary" />
             <p className=" text-sm text-neutralSecondary">Support</p>
           </div>
@@ -144,11 +154,14 @@ export default function Page() {
             <p className=" font-medium text-xl tracking-tight">Jobs</p>
           </div>
 
-          <div className=" flex items-center gap-0">
-            <div className=" w-10 h-10 flex items-center justify-center">
-              <MessageCircleMore className=" w-5 h-5 text-neutralSecondary" />
+          <div className=" flex items-center gap-2">
+            <div className="relative cursor-pointer">
+              <div className=" absolute p-[1px] w-2 h-2 z-10 bg-white rounded-full top-0 right-0">
+                <div className=" w-full h-full bg-[#F43F5F] rounded-full"></div>
+              </div>
+              <MessageCircleMore className=" w-5 h-5 text-neutralSecondary relative"></MessageCircleMore>
             </div>
-            <div className=" w-10 h-10 flex items-center justify-center">
+            <div className=" w-10 h-10 flex items-center justify-center cursor-pointer">
               <Bell className=" w-5 h-5 text-neutralSecondary" />
             </div>
           </div>
@@ -164,7 +177,7 @@ export default function Page() {
 
               <div className=" bg-accentLime py-1 gap-[6px] px-[10px] rounded-full flex items-center w-fit">
                 <Sparkles />
-                <p className=" text-accentLimePrimary text-xs tracking-tight">
+                <p className=" text-accentLimePrimary text-sm tracking-tight">
                   100% match
                 </p>
               </div>
@@ -221,9 +234,7 @@ export default function Page() {
                 <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderNeutralPrimary">
                   <Bookmark className=" w-5 h-5 text-neutralPrimary" />
                 </button>
-                <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderDestructiveSecondary">
-                  <ThumbsDown />
-                </button>
+                <DislikeButton />
               </div>
 
               <FadedSeparator fadeBothSides={true} />
@@ -313,7 +324,7 @@ export default function Page() {
               </div>
               <div className=" flex items-center gap-2 pb-4 border-b border-borderNeutralSecondary">
                 <p className=" font-medium text-sm w-28">Tools</p>
-                <RoundedContainerTag className=" flex items-center gap-2">
+                <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
                   <Image
                     src={"/shopify.png"}
                     width={50}
@@ -323,7 +334,7 @@ export default function Page() {
                   />
                   <p>Shopify</p>
                 </RoundedContainerTag>
-                <RoundedContainerTag className=" flex items-center gap-2">
+                <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
                   <Image
                     src={"/magento.png"}
                     width={50}
@@ -333,7 +344,7 @@ export default function Page() {
                   />
                   <p>Magento</p>
                 </RoundedContainerTag>
-                <RoundedContainerTag className=" flex items-center gap-2">
+                <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
                   <Image
                     src={"/webflow.png"}
                     width={50}
@@ -358,7 +369,7 @@ export default function Page() {
                 <RoundedContainerTag>Fashion & Apparel</RoundedContainerTag>
               </div>
             </div>
-            <p className=" text-neutralSecondary tracking-tight">
+            <p className=" text-neutralSecondary tracking-tight pr-4">
               We are looking for a{" "}
               <span className=" font-bold">
                 skilled and results-driven Marketing Specialist
@@ -367,7 +378,7 @@ export default function Page() {
               planning, executing, and optimizing marketing campaigns to achieve
               our business objectives.
             </p>
-            <div>
+            <div className=" pr-4">
               <p className=" text-2xl font-medium py-4">Responsibilities</p>
               <ol className=" list-outside text-neutralSecondary list-decimal pl-4 tracking-tight pr-3 flex flex-col items-start  gap-2 text-base">
                 <li>
@@ -389,7 +400,7 @@ export default function Page() {
                 </li>
               </ol>
             </div>
-            <div>
+            <div className=" pr-4">
               <p className="text-2xl font-medium py-4">Qualifications</p>
               <ol className="list-outside text-neutralSecondary list-decimal pl-4 tracking-tight pr-3 flex flex-col items-start gap-2 text-base">
                 <li>
@@ -476,11 +487,78 @@ function RoundedContainerTag({
   return (
     <div
       className={cn(
-        "py-2 px-3 rounded-full border border-borderNeutralPrimary text-sm",
+        "py-[4px] px-[10px] rounded-full border border-borderNeutralPrimary text-sm",
         className
       )}
     >
       {children}
     </div>
+  );
+}
+
+function DislikeButton() {
+  return (
+    <Popover>
+      <PopoverTrigger asChild>
+        <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderDestructiveSecondary">
+          <ThumbsDown />
+        </button>
+      </PopoverTrigger>
+      <PopoverContent
+        className=" w-80 rounded-2xl border border-borderNeutralPrimary text-sm bg-[#FFFFFFD9] p-4 flex flex-col gap-4 tracking-tight"
+        style={{
+          boxShadow: "0px 24px 48px -12px #1F29371F",
+          backdropFilter: "blur(64px)",
+        }}
+      >
+        <div className=" flex items-center gap-2">
+          <Checkbox />
+          <p>I&apos;m just not interested in this job</p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <Checkbox />
+          <p>Doesn&apos;t match my skills or preferences</p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <Checkbox />
+          <p>Vague project description</p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <Checkbox checked={true} />
+          <p>Unrealistic budget</p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <Checkbox />
+          <p>Overly lengthy requirements</p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <Checkbox checked={true} />
+          <p>Unprofessional tone</p>
+        </div>
+        <div className=" flex items-center gap-2">
+          <Checkbox />
+          <p>Requesting unpaid test tasks</p>
+        </div>
+        <button
+          className=" w-full h-8 rounded-[10px] font-medium py-1 px-3 bg-accentBlue text-white"
+          style={{
+            boxShadow:
+              "0px 8px 16px -8px #3040FF33, 0px 13px 27px -5px #3040FF26",
+          }}
+        >
+          Send report
+        </button>
+        <p className=" text-neutralTertiary text-xs flex items-start gap-1 self-center">
+          <span className=" inline">
+            <Info className=" w-3 h-3 text-inherit inline" />
+          </span>
+          <span>
+            {" "}
+            Your report is private, the client won&apos;t be notified.
+            We&apos;ll use your feedback to improve job matching.
+          </span>
+        </p>
+      </PopoverContent>
+    </Popover>
   );
 }
