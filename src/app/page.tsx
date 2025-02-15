@@ -1,155 +1,32 @@
+"use client";
 import Image from "next/image";
 import {
   Bell,
   Bookmark,
   BriefcaseBusiness,
-  ChevronsUpDown,
-  Clipboard,
   Clock3,
   Dot,
-  House,
-  Info,
   Languages,
   MapPin,
   MessageCircleMore,
-  Plus,
-  Search,
-  Settings,
-  SidebarClose,
   Star,
-  WalletCards,
 } from "lucide-react";
-import Avatar from "../../public/avatar.png";
-import { ArrowLeft, Midlevel, Sparkles, ThumbsDown } from "../components/icons";
+import { ArrowLeft, Midlevel, Sparkles } from "../components/icons";
 import { cn } from "@/lib/utils";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Checkbox } from "@/components/ui/checkbox";
+import { DislikePopover } from "@/components/downvote-button";
+import { Sidebar } from "@/components/sidebar";
+import { FadedSeparator } from "@/components/ui/separator";
 export default function Page() {
   return (
     <div className=" flex items-stretch w-full relative">
       {/* sidebar */}
-      <div className="h-dvh bg-gray30 w-60 shrink-0 border-r border-borderNeutralSecondary sticky top-0">
-        <div className=" relative h-full">
-          {/* sidebar logo */}
-          <div className=" pl-5 py-4 pr-2 flex w-full items-center justify-between border-b border-borderNeutralSecondary">
-            <Image
-              src={"/logo.svg"}
-              width={150}
-              height={50}
-              alt="hiry logo"
-              className=" h-8 w-auto"
-            />
-            <button className=" w-8 h-8 flex items-center justify-center bg-inherit hover:bg-gray-50 transition-all p-1 rounded-md">
-              <SidebarClose className="text-neutralSecondary w-4 h-4" />
-            </button>
-          </div>
-
-          {/* sidebar content */}
-
-          <div className=" px-3 pt-3 pb-4">
-            {/* profile name */}
-            <div className=" flex items-center justify-between p-2 mb-4">
-              <div className=" flex items-center gap-2">
-                <div className="relative w-10 h-8">
-                  <div className=" w-8 h-8 rounded-full overflow-hidden">
-                    <Image
-                      src={Avatar}
-                      alt="avatar"
-                      className="rounded-full h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className=" absolute flex items-center justify-center rounded-full w-5 h-5 p-[1px] z-10 bottom-0 right-0 bg-white">
-                    <Image
-                      src={"/company.png"}
-                      width={100}
-                      height={100}
-                      alt="company"
-                      className=" rounded-full object-cover"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <p className=" text-sm font-medium text-neutralPrimary">
-                    Alex Johnson
-                  </p>
-                  <p className=" text-xs text-neutralTertiary">DevStudio</p>
-                </div>
-              </div>
-
-              <button className=" w-8 h-8 flex items-center justify-center bg-inherit hover:bg-gray-50 transition-all p-[10px] rounded-md">
-                <ChevronsUpDown className=" text-neutralSecondary w-4 h-4" />
-              </button>
-            </div>
-
-            <div className=" flex flex-col items-start w-full">
-              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
-                <House className=" w-4 h-4 text-neutralSecondary" />
-                <p className=" text-sm text-neutralSecondary">Dashboard</p>
-              </div>
-              <div className=" p-[10px] w-full">
-                <FadedSeparator />
-              </div>
-              <div className=" flex items-center gap-3 relative cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
-                <Dot className=" absolute w-7 h-7 -left-[14px] top-1/2 -translate-y-1/2 text-[#F43F5F]" />
-                <MessageCircleMore className=" w-4 h-4 text-neutralSecondary" />
-                <p className=" text-sm text-neutralSecondary">Messages</p>
-              </div>
-              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
-                <Search className=" w-4 h-4 text-neutralSecondary" />
-                <p className=" text-sm text-neutralSecondary">
-                  Discover Freelancers
-                </p>
-              </div>
-              <div className=" flex items-center justify-between cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
-                <div className=" flex items-center gap-3">
-                  <Clipboard className=" w-4 h-4 text-neutralSecondary" />
-                  <p className=" text-sm text-neutralSecondary">Jobs</p>
-                </div>
-                <button className=" w-6 h-6 flex items-center justify-center">
-                  <Plus className=" text-neutralSecondary w-4 h-4" />
-                </button>
-              </div>
-
-              <div className=" flex items-center justify-between bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md cursor-pointer">
-                <div className=" flex items-center gap-3">
-                  <BriefcaseBusiness className=" w-4 h-4 text-neutralSecondary" />
-                  <p className=" text-sm text-neutralSecondary">Projects</p>
-                </div>
-                <button className=" w-6 h-6 flex items-center justify-center">
-                  <Plus className=" text-neutralSecondary w-4 h-4" />
-                </button>
-              </div>
-
-              <div className=" p-[10px] w-full">
-                <FadedSeparator />
-              </div>
-              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
-                <WalletCards className=" w-4 h-4 text-neutralSecondary" />
-                <p className=" text-sm text-neutralSecondary">Payments</p>
-              </div>
-              <div className=" flex items-center gap-3 cursor-pointer bg-inherit hover:bg-gray-50 transition-all w-full p-[10px] rounded-md">
-                <Settings className=" w-4 h-4 text-neutralSecondary" />
-                <p className=" text-sm text-neutralSecondary">Settings</p>
-              </div>
-            </div>
-          </div>
-          <div className=" absolute bottom-4 left-3 p-3 flex items-center gap-3 cursor-pointer">
-            <Info className=" w-4 h-4 text-neutralSecondary" />
-            <p className=" text-sm text-neutralSecondary">Support</p>
-          </div>
-        </div>
-      </div>
-
+      <Sidebar />
       {/* main content */}
 
       <div className=" bg-white w-full text-neutralPrimary relative">
         {/* header */}
 
-        <div className=" sticky top-0 bg-white w-full flex items-center justify-between px-8 py-3 border-b border-borderNeutralSecondary">
+        <div className=" sticky top-0 bg-white w-full flex items-center justify-between px-2 md:px-8 py-3 border-b border-borderNeutralSecondary">
           <div className=" flex items-center gap-2">
             <div className=" w-8 h-8 flex items-center justify-center">
               <ArrowLeft />
@@ -171,25 +48,27 @@ export default function Page() {
         </div>
 
         {/* jobs */}
-        <div className=" px-10 pt-8 pb-20 flex items-stretch gap-5">
-          <div className=" basis-2/5 shrink-0 flex flex-col gap-4 items-start">
+        <div className=" px-4 md:px-10 pt-5 md:pt-8 pb-20 flex lg:flex-row flex-col md:items-stretch gap-5">
+          <div className=" md:basis-2/5 shrink-0 flex flex-col gap-4 items-start">
             {/* Job */}
 
-            <div className=" p-6 border border-borderNeutralPrimary flex flex-col items-start w-full gap-4 rounded-[20px]">
+            <div className=" md:p-6 md:border md:border-borderNeutralPrimary flex flex-col items-start w-full gap-5 md:gap-4 md:rounded-[20px]">
               {/* match indicator */}
 
               <div className=" bg-accentLime py-1 gap-[6px] px-[10px] rounded-full flex items-center w-fit">
                 <Sparkles />
-                <p className=" text-accentLimePrimary text-sm">100% match</p>
+                <p className=" text-accentLimePrimary text-xs md:text-sm">
+                  100% match
+                </p>
               </div>
-              <p className=" font-medium text-2xl leading-7 tracking-tight">
+              <p className=" font-medium text-lg md:text-2xl leading-7 tracking-tight">
                 Freelance Marketing Consultant Needed for Strategic Audience
                 Engagement
               </p>
 
               {/* tags */}
 
-              <div className=" flex items-center gap-[10px] w-full tracking-tight">
+              <div className=" flex items-center flex-wrap gap-[10px] w-full tracking-tight">
                 <p className="text-sm bg-purple100 py-1 px-3 rounded-full text-purple900">
                   $50-100/hr
                 </p>
@@ -224,7 +103,7 @@ export default function Page() {
 
               <div className=" flex items-center w-full justify-between">
                 <button
-                  className=" basis-[70%] h-12 shrink-0 bg-accentBlue text-white tracking-tight font-medium rounded-[14px] py-1 px-5 hover:bg-[#2D3BFA] transition-all"
+                  className=" basis-3/5 md:basis-[70%] h-12 shrink-0 bg-accentBlue text-white tracking-tight font-medium rounded-[14px] py-1 px-5 hover:bg-[#2C36F0] transition-all duration-200"
                   style={{
                     boxShadow:
                       "0px 8px 16px -8px #3040FF33, 0px 13px 27px -5px #3040FF26",
@@ -235,7 +114,7 @@ export default function Page() {
                 <button className=" w-12 h-12 flex items-center bg-white hover:bg-[#FCFCFC] transition-all justify-center rounded-[14px] border border-borderNeutralPrimary">
                   <Bookmark className=" w-5 h-5 text-neutralPrimary" />
                 </button>
-                <DislikeButton />
+                <DislikePopover />
               </div>
 
               <FadedSeparator fadeBothSides={true} />
@@ -260,7 +139,7 @@ export default function Page() {
               </p>
             </div>
 
-            <div className=" p-6 w-full rounded-[20px] border border-borderNeutralPrimary flex flex-col items-start gap-4">
+            <div className=" pt-2 md:p-6 w-full md:rounded-[20px] md:border md:border-borderNeutralPrimary flex flex-col items-start gap-5 md:gap-4">
               <div className=" flex items-center gap-2">
                 <div className=" w-10 h-10 rounded-full overflow-hidden">
                   <Image
@@ -274,7 +153,7 @@ export default function Page() {
                 <p className=" text-xl font-medium tracking-tight">DevStudio</p>
               </div>
 
-              <div className=" flex items-center gap-3 text-sm">
+              <div className=" flex items-center flex-wrap gap-3 text-sm">
                 <p className=" py-[6px] px-3 rounded-full border border-borderNeutralPrimary">
                   Healthcare
                 </p>
@@ -291,7 +170,7 @@ export default function Page() {
               <div className=" flex items-center gap-2 tracking-tight">
                 <Star className=" w-4 h-4 text-[#EBB305] fill-[#EBB305]" />
                 <p className=" text-sm">
-                  <span className=" font-medium">100%</span>
+                  <span className=" font-medium">100%</span>{" "}
                   <span className=" text-neutralTertiary">
                     of company&apos;s hires recommend them
                   </span>
@@ -316,58 +195,77 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <div className=" shrink-0 basis-3/5 pl-6 flex flex-col gap-8 tracking-tight">
+          <div className=" md:hidden py-6">
+            <FadedSeparator fadeBothSides={true} />
+          </div>
+          <div className=" shrink-0 md:basis-3/5 md:pl-6 flex flex-col gap-8 tracking-tight">
             <div className=" flex flex-col w-full gap-4">
-              <div className=" flex items-center gap-2 pb-4 border-b border-borderNeutralSecondary">
-                <p className=" font-medium text-sm w-28">Skills</p>
-                <RoundedContainerTag>A/B Testing</RoundedContainerTag>
-                <RoundedContainerTag>Account Management</RoundedContainerTag>
+              <div className=" flex items-start gap-2 pb-4 border-b border-borderNeutralSecondary">
+                <p className=" font-medium text-sm w-[72px] shrink-0 md:w-28">
+                  Skills
+                </p>
+                <div className=" flex items-center gap-2 flex-wrap">
+                  <RoundedContainerTag>A/B Testing</RoundedContainerTag>
+                  <RoundedContainerTag>Account Management</RoundedContainerTag>
+                </div>
               </div>
-              <div className=" flex items-center gap-2 pb-4 border-b border-borderNeutralSecondary">
-                <p className=" font-medium text-sm w-28">Tools</p>
-                <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
-                  <Image
-                    src={"/shopify.png"}
-                    width={50}
-                    height={50}
-                    className=" w-6 h-6"
-                    alt="shopify"
-                  />
-                  <p>Shopify</p>
-                </RoundedContainerTag>
-                <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
-                  <Image
-                    src={"/magento.png"}
-                    width={50}
-                    height={50}
-                    className=" w-6 h-6"
-                    alt="magento"
-                  />
-                  <p>Magento</p>
-                </RoundedContainerTag>
-                <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
-                  <Image
-                    src={"/webflow.png"}
-                    width={50}
-                    height={50}
-                    className=" w-6 h-6"
-                    alt="webflow"
-                  />
-                  <p>Webflow</p>
-                </RoundedContainerTag>
+              <div className=" flex items-start gap-2 pb-4 border-b border-borderNeutralSecondary">
+                <p className=" font-medium text-sm w-[72px] shrink-0 md:w-28">
+                  Tools
+                </p>
+                <div className=" flex items-center gap-2 flex-wrap">
+                  <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
+                    <Image
+                      src={"/shopify.png"}
+                      width={50}
+                      height={50}
+                      className=" w-6 h-6"
+                      alt="shopify"
+                    />
+                    <p>Shopify</p>
+                  </RoundedContainerTag>
+                  <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
+                    <Image
+                      src={"/magento.png"}
+                      width={50}
+                      height={50}
+                      className=" w-6 h-6"
+                      alt="magento"
+                    />
+                    <p>Magento</p>
+                  </RoundedContainerTag>
+                  <RoundedContainerTag className=" flex items-center gap-1 pl-1 pr-2">
+                    <Image
+                      src={"/webflow.png"}
+                      width={50}
+                      height={50}
+                      className=" w-6 h-6"
+                      alt="webflow"
+                    />
+                    <p>Webflow</p>
+                  </RoundedContainerTag>
+                </div>
               </div>
-              <div className=" flex items-center gap-2 pb-4 border-b border-borderNeutralSecondary">
-                <p className=" font-medium text-sm w-28">Industries</p>
-                <RoundedContainerTag>Ecommerce/DTC</RoundedContainerTag>
-                <RoundedContainerTag>B2B/Tech</RoundedContainerTag>
+              <div className=" flex items-start gap-2 pb-4 border-b border-borderNeutralSecondary">
+                <p className=" font-medium text-sm w-[72px] shrink-0 md:w-28">
+                  Industries
+                </p>
+                <div className=" flex items-center gap-2 flex-wrap">
+                  <RoundedContainerTag>Ecommerce/DTC</RoundedContainerTag>
+                  <RoundedContainerTag>B2B/Tech</RoundedContainerTag>
+                </div>
               </div>
-              <div className=" flex items-center gap-2 pb-4">
-                <p className=" font-medium text-sm w-28">Niches</p>
-                <RoundedContainerTag>
-                  Beauty & Personal Care
-                </RoundedContainerTag>
-                <RoundedContainerTag>Health & Wellness</RoundedContainerTag>
-                <RoundedContainerTag>Fashion & Apparel</RoundedContainerTag>
+              <div className=" flex items-start gap-2 pb-4">
+                <p className=" font-medium text-sm w-[72px] shrink-0 md:w-28">
+                  Niches
+                </p>
+                <div className=" flex items-center gap-2 flex-wrap">
+                  <RoundedContainerTag>
+                    Beauty & Personal Care
+                  </RoundedContainerTag>
+                  <RoundedContainerTag>Health & Wellness</RoundedContainerTag>
+                  <RoundedContainerTag>Fashion & Apparel</RoundedContainerTag>
+                </div>
               </div>
             </div>
             <p className=" text-neutralSecondary tracking-tight pr-4">
@@ -380,7 +278,9 @@ export default function Page() {
               our business objectives.
             </p>
             <div className=" pr-4">
-              <p className=" text-2xl font-medium py-4">Responsibilities</p>
+              <p className=" text-xl md:text-2xl font-medium py-4">
+                Responsibilities
+              </p>
               <ol className=" list-outside text-neutralSecondary list-decimal pl-4 tracking-tight pr-3 flex flex-col items-start  gap-2 text-base">
                 <li>
                   Develop and implement marketing strategies across digital and
@@ -402,7 +302,9 @@ export default function Page() {
               </ol>
             </div>
             <div className=" pr-4">
-              <p className="text-2xl font-medium py-4">Qualifications</p>
+              <p className=" text-xl md:text-2xl font-medium py-4">
+                Qualifications
+              </p>
               <ol className="list-outside text-neutralSecondary list-decimal pl-4 tracking-tight pr-3 flex flex-col items-start gap-2 text-base">
                 <li>
                   Develop and implement comprehensive marketing strategies
@@ -452,32 +354,6 @@ export default function Page() {
   );
 }
 
-function FadedSeparator({ fadeBothSides }: { fadeBothSides?: boolean }) {
-  if (fadeBothSides)
-    return (
-      <span
-        className=" block w-full"
-        aria-hidden
-        style={{
-          border: "0.9px solid transparent",
-          borderImage:
-            "linear-gradient(to right, #fff 0%, #fff 13%, var(--border-neutral-primary) 60%, #fff 87%, #fff 100%) 0.9",
-        }}
-      ></span>
-    );
-  return (
-    <span
-      className=" block w-full"
-      aria-hidden
-      style={{
-        border: "0.9px solid transparent",
-        borderImage:
-          "linear-gradient(to right, var(--border-neutral-primary), #fff) 0.9",
-      }}
-    ></span>
-  );
-}
-
 function RoundedContainerTag({
   children,
   className,
@@ -494,72 +370,5 @@ function RoundedContainerTag({
     >
       {children}
     </div>
-  );
-}
-
-function DislikeButton() {
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <button className=" w-12 h-12 flex items-center justify-center rounded-[14px] border border-borderDestructiveSecondary bg-white hover:bg-[#FEFBFC] transition-all">
-          <ThumbsDown />
-        </button>
-      </PopoverTrigger>
-      <PopoverContent
-        className=" w-80 rounded-2xl border border-borderNeutralPrimary text-sm bg-[#FFFFFFD9] p-4 flex flex-col gap-4 tracking-tight"
-        style={{
-          boxShadow: "0px 24px 48px -12px #1F29371F",
-          backdropFilter: "blur(64px)",
-        }}
-      >
-        <div className=" flex items-center gap-2">
-          <Checkbox />
-          <p>I&apos;m just not interested in this job</p>
-        </div>
-        <div className=" flex items-center gap-2">
-          <Checkbox />
-          <p>Doesn&apos;t match my skills or preferences</p>
-        </div>
-        <div className=" flex items-center gap-2">
-          <Checkbox />
-          <p>Vague project description</p>
-        </div>
-        <div className=" flex items-center gap-2">
-          <Checkbox checked={true} />
-          <p>Unrealistic budget</p>
-        </div>
-        <div className=" flex items-center gap-2">
-          <Checkbox />
-          <p>Overly lengthy requirements</p>
-        </div>
-        <div className=" flex items-center gap-2">
-          <Checkbox checked={true} />
-          <p>Unprofessional tone</p>
-        </div>
-        <div className=" flex items-center gap-2">
-          <Checkbox />
-          <p>Requesting unpaid test tasks</p>
-        </div>
-        <button
-          className=" w-full h-8 rounded-[10px] font-medium py-1 px-3 bg-accentBlue text-white"
-          style={{
-            boxShadow:
-              "0px 8px 16px -8px #3040FF33, 0px 13px 27px -5px #3040FF26",
-          }}
-        >
-          Send report
-        </button>
-        <p className=" text-neutralTertiary text-xs flex items-start gap-1 self-center">
-          <span className=" inline">
-            <Info className=" w-3 h-3 text-inherit inline" />
-          </span>
-          <span>
-            {" "}
-            Your report is private, the client won&apos;t be notified.
-            We&apos;ll use your feedback to improve job matching.
-          </span>
-        </p>
-      </PopoverContent>
-    </Popover>
   );
 }
